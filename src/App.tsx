@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Navbar from './components/NavBar'
+import Navbar from './components/Navbar'
 import Carrousel from './components/Carrousel'
 import Feed from './components/Feed'
 import Perfil from './components/Perfil'
