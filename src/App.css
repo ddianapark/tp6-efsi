@@ -1,3 +1,5 @@
+/* navbar css a ese archivo */
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -72,7 +74,8 @@
 
 .container-fluid {
   display: flex;
-  border-top: 1px solid var(--border);
+  border-right: 1px solid #DBDBDB;
+  width: fit-content;
   text-align: center;
 
   & > div {
@@ -108,7 +111,7 @@
   margin: 32px 0 0;
 
   .perfil-img{
-    border: 2px solid;
+    border: 2px solid transparent;
     border-radius: 50%;
     width: 25px;
     height: 25px;
@@ -173,4 +176,9 @@
 
 .nav-link.active {
   font-weight: bold;
+}
+
+.bg-body-tertiary{
+  background-color: white !important;
+  width: fit-content;
 }
