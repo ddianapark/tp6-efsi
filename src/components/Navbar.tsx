@@ -7,6 +7,7 @@ import MessagesIcon from './icons/MessagesIcon';
 import NotificationsIcon from './icons/NotificationsIcon';
 import CreateIcon from './icons/CreateIcon';
 import MoreIcon from './icons/MoreIcon';
+import '../styles/Navbar.css';
 
 export default function Navbar() {
   return (

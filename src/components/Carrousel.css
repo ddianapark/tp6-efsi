@@ -1,9 +1,0 @@
-.carousel-control-next, .carousel-control-prev{
-    color: '#262626';
-    background-color: rebeccapurple;
-}
-
-.carousel-item.active, .carousel-item{
-    display: flex !important;
-    flex-direction: row !important;
-}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './Story.css'
+import '../styles/Story.css'
 import { getCatImg } from '../services/apiCalls'
 
 export default function Story() {

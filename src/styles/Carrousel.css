@@ -1,0 +1,29 @@
+.carrousel{
+    position: relative;
+}
+
+.carrousel-control-next, .carrousel-control-prev{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    border: none;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rebeccapurple;
+    color: #262626;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.carrousel-control-prev{ left: 8px; }
+.carrousel-control-next{ right: 8px; }
+
+.carrousel-item.active, .carrousel-item{
+    display: flex !important;
+    flex-direction: row !important;
+}
