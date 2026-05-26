@@ -1,18 +1,16 @@
+import type { CarrouselProps } from "../types";
 import Story from "./Story";
 import '../styles/Carrousel.css'
 
-export default function Carrousel() {
+export default function Carrousel({ stories }: CarrouselProps) {
   return (
     <div className="carrousel">
       <div id="carrouselExample" className="carrousel slide" data-bs-interval="false" data-bs-touch="true">
         <div className="carrousel-inner">
           <div className="carrousel-item active">
-            <Story />
-            <Story />
-            <Story />
-            <Story />
-            <Story />
-            <Story />
+            {stories?.map((story) => (
+              <Story key={story.username} data={story} />
+            ))}
           </div>
         </div>
 

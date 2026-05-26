@@ -1,0 +1,33 @@
+.post img{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.post footer{
+	padding: 8px 4px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.user img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user h5{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.postActions{
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+}

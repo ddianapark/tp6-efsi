@@ -1,6 +1,6 @@
 import api from "../services/api";
 
-export async function getCat() {
+async function getCat() {
   try {
     const response = await api.get("");
     return response.data[0];
@@ -10,7 +10,7 @@ export async function getCat() {
   }
 };
 
-export async function getCatImg() {
+async function getCatImg() {
   try {
     const response = await api.get("");
     return response.data[0].url;
@@ -20,7 +20,7 @@ export async function getCatImg() {
   }
 };
 
-export async function getCats(count: number) {
+async function getCats(count: number) {
     try {
         const response = await api.get(`?limit=${count}`);
         return response.data;
@@ -29,3 +29,9 @@ export async function getCats(count: number) {
         return [];
     }
 };
+
+export default {
+  getCat,
+  getCatImg,
+  getCats
+}

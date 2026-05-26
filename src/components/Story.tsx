@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import '../styles/Story.css'
-import { getCatImg } from '../services/apiCalls'
+import type { StoryProps } from '../types'
+import apiCalls from '../services/apiCalls'
 
-export default function Story() {
+export default function Story({ data }: StoryProps) {
   const [catImg, setCatImg] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchCatImg = async () => {
-      const img = await getCatImg()
+      const img = await apiCalls.getCatImg()
       setCatImg(img)
     }
 
@@ -17,7 +18,7 @@ export default function Story() {
   return (
     <div className="story">
       <img src={catImg || undefined} alt="Story" className="story-avatar" />
-      <span className="story-username">@username</span>
+      <span className="story-username">@{data.username}</span>
     </div>
   )
 }

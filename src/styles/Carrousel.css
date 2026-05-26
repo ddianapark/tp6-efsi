@@ -1,5 +1,7 @@
 .carrousel{
     position: relative;
+    width: 100% !important;
+
 }
 
 .carrousel-control-next, .carrousel-control-prev{
@@ -13,17 +15,20 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: rebeccapurple;
-    color: #262626;
+    background-color: transparent;
+    color: #b3b1b16b;
     cursor: pointer;
     border-radius: 4px;
     padding: 0;
+    
 }
 
-.carrousel-control-prev{ left: 8px; }
-.carrousel-control-next{ right: 8px; }
+.carrousel-control-prev{ left: 4px; }
+.carrousel-control-next{ right: 4px; }
 
 .carrousel-item.active, .carrousel-item{
     display: flex !important;
     flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
 }

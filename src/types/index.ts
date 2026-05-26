@@ -11,16 +11,20 @@ export interface PostType {
     userImage: string;
     postImage: string;
     caption: string;
-    likes: number;
-    comments: number;
+    // likes: number;
+    // comments: number;
 }
 
-export interface Story {
+export interface StoryProps {
+    data: StoryType
+}
+
+export interface StoryType {
     username: string,
     userImage: string,
     seen: boolean
 }
 
 export interface CarrouselProps {
-    stories: Story[]
+    stories: StoryType[]
 }
