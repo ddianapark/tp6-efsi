@@ -4,11 +4,14 @@ import Navbar from './components/Navbar'
 import Carrousel from './components/Carrousel'
 import Feed from './components/Feed'
 import Perfil from './components/Perfil'
+import CloseUp from './components/CloseUp'
+import type { CloseUpType } from './types/index.ts'
 import './App.css'
 
 function App() {
-  const [posts, setPosts] = useState(null)
-  const [stories, setStories] = useState(null)
+  const [posts, setPosts] = useState<any[] | null>(null)
+  const [stories, setStories] = useState<any[] | null>(null)
+  const [closeUp, setCloseUp] = useState<CloseUpType>({ isCloseUp: false, data: null })
 
   useEffect(() => {
     apiCalls.getCats(9).then(cats => {
@@ -21,7 +24,7 @@ function App() {
         // comments: Math.floor(Math.random() * 500)
       })))
     })
-    apiCalls.getCats(6).then(cats => {
+    apiCalls.getCats(7).then(cats => {
       setStories(cats.map((cat: any) => ({
         username: cat.breeds[0]?.name || cat.id,
         userImage: cat.url,
@@ -31,12 +34,20 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <div className="div1"><Navbar /></div>
-      <div className="div2"><Carrousel stories={stories} /></div>
-      <div className="div3"><Feed posts={posts} /></div>
-      <Perfil />
-    </div>
+    <>
+      <div className="App">
+        <div className="div1"><Navbar /></div>
+        <section className='scroll'>
+          <div className="div2"><Carrousel stories={stories} /></div>
+          <div className="div3"><Feed posts={posts} setCloseUp={setCloseUp} /></div>
+        </section>
+        <Perfil />
+      </div>
+      {
+        closeUp.isCloseUp && closeUp.data &&
+          <CloseUp isCloseUp={closeUp.isCloseUp} data={closeUp.data} closeOverlay={() => setCloseUp({ isCloseUp: false, data: null })}/>
+      }
+    </>
   )
 }
 

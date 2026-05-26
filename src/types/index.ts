@@ -1,30 +1,38 @@
 export interface FeedProps {
-    posts: PostType[]
+    posts: PostType[] | null,
+    setCloseUp?: (state: CloseUpType) => void
 }
 
-export interface PostProps {
-    data: PostType
+export type PostProps = {
+    data: PostType,
+    setCloseUp?: (state: CloseUpType) => void
 }
 
 export interface PostType {
-    username: string;
-    userImage: string;
-    postImage: string;
-    caption: string;
-    // likes: number;
-    // comments: number;
+    username: string,
+    userImage: string,
+    postImage: string,
+    caption: string,
+    // likes: number,
+    // comments: number
+}
+
+export interface CloseUpType {
+    isCloseUp: boolean,
+    data: PostType | null,
+    closeOverlay?: () => void
 }
 
 export interface StoryProps {
-    data: StoryType
+    data: StoryType;
 }
 
 export interface StoryType {
-    username: string,
-    userImage: string,
-    seen: boolean
+    username: string;
+    userImage: string;
+    seen: boolean;
 }
 
 export interface CarrouselProps {
-    stories: StoryType[]
+    stories: StoryType[] | null;
 }

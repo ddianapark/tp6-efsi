@@ -4,7 +4,7 @@ import Post from "./Post.tsx"
 import "../styles/Feed.css"
 import { useEffect, useRef } from "react"
 
-function Feed({ posts }: FeedProps ) {
+const Feed = ({ posts, setCloseUp }: FeedProps) => {
   const gridRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -58,13 +58,13 @@ function Feed({ posts }: FeedProps ) {
 
   return (
     <div className="feed">
-        <section className="posts" ref={gridRef}>
-            {
-                posts?.map((post: PostType, index: number) => (
-                    <Post key={index} data={post} />
-                ))
-            }
-        </section>
+      <section className="posts" ref={gridRef}>
+        {
+          posts?.map((post: PostType, index: number) => (
+            <Post key={index} data={post} setCloseUp={setCloseUp} />
+          ))
+        }
+      </section>
     </div>
   )
 }
