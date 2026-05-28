@@ -8,8 +8,9 @@ import NotificationsIcon from './icons/NotificationsIcon';
 import CreateIcon from './icons/CreateIcon';
 import MoreIcon from './icons/MoreIcon';
 import '../styles/Navbar.css';
+import type { NavBarProps } from '../types/index.ts';
 
-export default function Navbar() {
+export default function Navbar({ user, setProfile }: NavBarProps) {
   return (
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
@@ -43,7 +44,7 @@ export default function Navbar() {
               <CreateIcon />
               <a className="nav-link">Create</a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={ () => setProfile && setProfile({ isProfile: true, user })}>
               <img className="perfil-img" src="/src/img/manon.jpg" alt="Manon Profile" />
               <a className="nav-link">Profile</a>
             </li>

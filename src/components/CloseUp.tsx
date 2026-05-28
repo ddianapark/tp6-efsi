@@ -11,8 +11,8 @@ export default function CloseUp({ data, closeOverlay }: CloseUpType) {
                 <img className="closeup-image" src={data?.postImage} alt="CloseUp post image" />
                 <div className='closeup-info'>
                     <div className="user">
-                        <img src={data?.userImage} alt="CloseUp user profile picture" />
-                        <h5>{data?.username}</h5>
+                        <img src={data?.user.userImage} alt="CloseUp user profile picture" />
+                        <h5>{data?.user.username}</h5>
                     </div>
 
                     <div className="closeup-caption">

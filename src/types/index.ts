@@ -3,14 +3,18 @@ export interface FeedProps {
     setCloseUp?: (state: CloseUpType) => void
 }
 
-export type PostProps = {
+export interface PostProps {
     data: PostType,
     setCloseUp?: (state: CloseUpType) => void
 }
 
-export interface PostType {
+export interface User {
     username: string,
-    userImage: string,
+    userImage: string
+}
+
+export interface PostType {
+    user: User
     postImage: string,
     caption: string,
     // likes: number,
@@ -24,15 +28,20 @@ export interface CloseUpType {
 }
 
 export interface StoryProps {
-    data: StoryType;
-}
-
-export interface StoryType {
-    username: string;
-    userImage: string;
-    seen: boolean;
+    data: User;
 }
 
 export interface CarrouselProps {
-    stories: StoryType[] | null;
+    stories: StoryProps[] | null;
+}
+
+export interface ProfileProps{
+    isProfile: boolean,
+    user: User,
+    closeOverlay?: () => void
+}
+
+export interface NavBarProps {
+    user: User | null,
+    setProfile?: (state: ProfileProps) => void
 }

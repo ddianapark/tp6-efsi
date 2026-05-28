@@ -14,6 +14,7 @@
   padding-left: 20px;
   height: 100%;
   align-content: start;
-  /* allow scrolling inside the posts area if content overflows the grid cell */
-  overflow: auto;
+  border-top: 1px solid #DBDBDB;
+  margin-top: 3%;  
+  padding-top: 3%;
 }

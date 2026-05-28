@@ -1,14 +1,41 @@
+import { useEffect } from 'react'
 import '../styles/Post.css'
 import type { PostProps } from '../types'
 
 export default function Post({ data, setCloseUp }: PostProps){
+    
+    useEffect(() => {
+        // [COPILOT] Update when images load and also wait for images before initial layout
+        const imgs = Array.from(document.querySelectorAll('img')) as HTMLImageElement[]
+        imgs.forEach(img => {
+        if (!img.complete) img.addEventListener('load')
+        })
+
+        // [COPILOT] Wait for any not-yet-loaded images, then size items once
+        const waitForImages = async () => {
+        await Promise.all(imgs.map(img => {
+            if (img.complete) return Promise.resolve()
+            return new Promise<void>(res => img.addEventListener('load', () => res(), { once: true }))
+        }))
+        }
+        void waitForImages()
+        // [COPILOT] Also run a short timeout as a fallback
+        const t = window.setTimeout(250)
+
+        return () => {
+        clearTimeout(t)
+        imgs.forEach(img => {
+            img.removeEventListener('load')
+        })
+        }
+    }, [])
 	return (
     <div className="post" onClick={() => setCloseUp && setCloseUp({ isCloseUp: true, data: data })}>
         <img src={data.postImage} alt="Post image" />
         <footer>
             <div className="user">
-                <img src={data.userImage} alt="User profile picture" />
-                <h5>{data.username}</h5>
+                <img src={data.user.userImage} alt="User profile picture" />
+                <h5>{data.user.username}</h5>
             </div>
             <div className="postActions">
                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-heart">
