@@ -5,7 +5,7 @@ import type { CloseUpType, PostType, ProfileProps } from '../types/index.ts'
 import '../styles/Profile.css'
 import CloseUp from './CloseUp.tsx'
 
-export default function Profile({ isProfile, user, closeOverlay }: ProfileProps) {
+export default function Profile({ isProfile, user }: ProfileProps) {
   const [posts, setPosts] = useState<any[] | null>(null)
   const [closeUp, setCloseUp] = useState<CloseUpType>({ isCloseUp: false, data: null })
   const [loadingPosts, setLoadingPosts] = useState(isProfile) // [COPILOT] Carga inicial basada en si el perfil está abierto
@@ -43,9 +43,6 @@ export default function Profile({ isProfile, user, closeOverlay }: ProfileProps)
   return (
     <>
       <div className="profile">
-        <button className="profile-close-btn" onMouseDown={closeOverlay}>
-          &times;
-        </button>
         <div className="profile-container" onMouseDown={(e) => e.stopPropagation()}>
           <img className="profile-image" src={user?.userImage} alt={`${user?.username} profile picture`} />
           <h2>{user?.username}</h2>

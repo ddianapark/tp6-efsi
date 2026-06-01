@@ -14,7 +14,7 @@ export interface User {
 }
 
 export interface PostType {
-    user: User
+    user: User,
     postImage: string,
     caption: string,
     // likes: number,
@@ -37,8 +37,7 @@ export interface CarrouselProps {
 
 export interface ProfileProps{
     isProfile: boolean,
-    user: User,
-    closeOverlay?: () => void
+    user: User | null
 }
 
 export interface NavBarProps {

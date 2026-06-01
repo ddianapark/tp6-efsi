@@ -28,8 +28,15 @@ const Feed = ({ posts, setCloseUp }: FeedProps) => {
       })
     }
     
+    // Call sizeItems immediately when posts change
+    sizeItems()
+    
+    // Add listener for resize events (dispatched by Post.tsx when images load)
+    window.addEventListener('resize', sizeItems)
+    
+    // Cleanup
     return () => {
-      window.removeEventListener('resize', sizeItems), [posts]
+      window.removeEventListener('resize', sizeItems)
     }
   }, [posts])
 

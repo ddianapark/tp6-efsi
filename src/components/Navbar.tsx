@@ -16,9 +16,9 @@ export default function Navbar({ user, setProfile }: NavBarProps) {
         <div className="container-fluid">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Logo />
-            <li className="nav-item">
+            <li className="nav-item clickable">
               <HomeIcon />
-              <a className="nav-link active clickable" aria-current="page" onClick={() => setProfile && setProfile({ isProfile: false, user: null })}>Home</a>
+              <a className="nav-link active" aria-current="page" onClick={() => setProfile && setProfile({ isProfile: false, user: null })}>Home</a>
             </li>
             <li className="nav-item">
               <SearchIcon />

@@ -5,6 +5,7 @@ import Carrousel from './components/Carrousel'
 import Feed from './components/Feed'
 import CloseUp from './components/CloseUp'
 import Profile from './components/Profile.tsx'
+import Loader from './components/Loader.tsx'
 import type { CloseUpType, ProfileProps, User } from './types/index.ts'
 import './App.css'
 
@@ -59,7 +60,7 @@ function App() {
   if (isLoading) {
     return (
       <div className="loader-container">
-        <div className="spinner"></div>
+        <Loader />
         <p>Cargando miau-gram...</p>
       </div>
     )
@@ -70,17 +71,19 @@ function App() {
       <div className="App">
         <div className="div1"><Navbar user={user} setProfile={setProfile} /></div>
         <section className='scroll'>
-          <div className="div2"><Carrousel stories={stories} /></div>
-          <div className="div3"><Feed posts={posts} setCloseUp={setCloseUp} /></div>
+          {profile.isProfile ? (
+            <Profile isProfile={profile.isProfile} user={profile.user} />
+          ) : (
+            <>
+              <div className="div2"><Carrousel stories={stories} /></div>
+              <div className="div3"><Feed posts={posts} setCloseUp={setCloseUp} /></div>
+            </>
+          )}
         </section>
       </div>
       {
         closeUp.isCloseUp && closeUp.data &&
           <CloseUp isCloseUp={closeUp.isCloseUp} data={closeUp.data} closeOverlay={() => setCloseUp({ isCloseUp: false, data: null })}/>
-      }
-      {
-        profile.isProfile && profile.user &&
-        <Profile isProfile={profile.isProfile} user={profile.user} closeOverlay={() => setProfile({ isProfile: false, user: null })}/>
       }
     </>
   )
