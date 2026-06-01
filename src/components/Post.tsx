@@ -8,7 +8,10 @@ export default function Post({ data, setCloseUp }: PostProps){
         // [COPILOT] Update when images load and also wait for images before initial layout
         const imgs = Array.from(document.querySelectorAll('img')) as HTMLImageElement[]
         imgs.forEach(img => {
-        if (!img.complete) img.addEventListener('load')
+        if (!img.complete) img.addEventListener('load', () => {
+            // [COPILOT] Size items once an image loads, to account for layout changes
+            const event = new Event('resize')
+            window.dispatchEvent(event)}, { once: true })
         })
 
         // [COPILOT] Wait for any not-yet-loaded images, then size items once
@@ -20,12 +23,15 @@ export default function Post({ data, setCloseUp }: PostProps){
         }
         void waitForImages()
         // [COPILOT] Also run a short timeout as a fallback
-        const t = window.setTimeout(250)
+        const t = window.setTimeout(() => {
+            const event = new Event('resize')
+            window.dispatchEvent(event)
+        }, 250)
 
         return () => {
         clearTimeout(t)
         imgs.forEach(img => {
-            img.removeEventListener('load')
+            img.removeEventListener('load', () => {})
         })
         }
     }, [])

@@ -18,7 +18,7 @@ export default function Navbar({ user, setProfile }: NavBarProps) {
             <Logo />
             <li className="nav-item">
               <HomeIcon />
-              <a className="nav-link active" aria-current="page">Home</a>
+              <a className="nav-link active clickable" aria-current="page" onClick={() => setProfile && setProfile({ isProfile: false, user: null })}>Home</a>
             </li>
             <li className="nav-item">
               <SearchIcon />
@@ -44,7 +44,7 @@ export default function Navbar({ user, setProfile }: NavBarProps) {
               <CreateIcon />
               <a className="nav-link">Create</a>
             </li>
-            <li className="nav-item" onClick={ () => setProfile && setProfile({ isProfile: true, user })}>
+            <li className="nav-item clickable" onClick={ () => setProfile && setProfile({ isProfile: true, user })}>
               <img className="perfil-img" src="/src/img/manon.jpg" alt="Manon Profile" />
               <a className="nav-link">Profile</a>
             </li>
