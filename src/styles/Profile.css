@@ -38,46 +38,42 @@
   gap: 1.5rem;
 }
 
+.profile-username-action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
 .profile-username {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 2rem;
   margin: 0;
   letter-spacing: -0.5px;
   color: #111111;
+  text-align: left;
+}
+
+.profile-settings-button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 50%;
+  background-color: #ffffff;
+  padding: 0;
+  cursor: default;
+}
+
+.profile-settings-button svg {
+  width: 20px;
+  height: 20px;
 }
 
 .profile-info-section p,
 .profile-info-section a {
   color: #262626;
-}
-
-.profile-username-action {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.profile-username-action h1 {
-  font-size: 2rem;
-  font-weight: 300;
-  margin: 0;
-  letter-spacing: -0.5px;
-}
-
-.profile-action-btn {
-  background-color: #f0f0f0;
-  border: 1px solid #dbdbdb;
-  padding: 0.5rem 2rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.profile-action-btn:hover {
-  background-color: #efefef;
-  border-color: #a8a8a8;
 }
 
 .profile-stats {
@@ -174,15 +170,25 @@
   flex: 1;
 }
 
-.profile-posts .loading {
+.profile-posts .loader-container {
   grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.profile-posts .loading {
   text-align: center;
   color: #737373;
   font-size: 0.95rem;
-  padding: 2rem;
+  margin-top: 1rem;
 }
 
-/* Responsive design */
+/* [COPILOT] Responsive design */
 @media (max-width: 768px) {
   .profile {
     padding: 1.5rem;

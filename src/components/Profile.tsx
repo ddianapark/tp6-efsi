@@ -4,6 +4,8 @@ import Post from './Post.tsx'
 import type { CloseUpType, PostType, ProfileProps } from '../types/index.ts'
 import '../styles/Profile.css'
 import CloseUp from './CloseUp.tsx'
+import Loader from './Loader.tsx'
+import Edit from './icons/Edit.tsx'
 
 export default function Profile({ isProfile, user }: ProfileProps) {
   const [posts, setPosts] = useState<any[] | null>(null)
@@ -52,7 +54,12 @@ export default function Profile({ isProfile, user }: ProfileProps) {
             </div>
             
             <div className="profile-info-section">
-              <h1 className="profile-username">{user?.username}</h1>
+              <div className="profile-username-action">
+                <h1 className="profile-username">@{user?.username}</h1>
+                <button className="profile-settings-button" type="button" aria-label="Configuración">
+                  <Edit />
+                </button>
+              </div>
               <div className="profile-stats">
                 <div className="stat">
                   <span className="stat-number">{posts?.length || 0}</span>
@@ -98,7 +105,11 @@ export default function Profile({ isProfile, user }: ProfileProps) {
         </div>
 
         <div className="profile-posts">
-          {loadingPosts ? <p className="loading">Cargando posts...</p> : 
+          {loadingPosts ? 
+          <div className="loader-container">
+            <Loader />
+            <p className="loading">Cargando posts...</p>
+          </div> : 
             posts?.map((post: PostType, index: number) => (
               <Post key={index} data={post} setCloseUp={setCloseUp} />
             ))
