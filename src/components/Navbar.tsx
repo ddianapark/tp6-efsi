@@ -10,15 +10,18 @@ import MoreIcon from './icons/MoreIcon';
 import '../styles/Navbar.css';
 import type { NavBarProps } from '../types/index.ts';
 
-export default function Navbar({ user, setProfile }: NavBarProps) {
+export default function Navbar({ user, isProfile, setProfile }: NavBarProps) {
+  const active = isProfile ? 'profile' : 'home';
+
   return (
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Logo />
-            <li className="nav-item clickable">
+            <li className="nav-item clickable"
+            onClick={() => setProfile && setProfile({ isProfile: false, user: null })}>
               <HomeIcon />
-              <a className="nav-link active" aria-current="page" onClick={() => setProfile && setProfile({ isProfile: false, user: null })}>Home</a>
+              <a aria-current="page" className={`nav-link ${active === 'home' ? 'active' : ''}`}>Home</a>
             </li>
             <li className="nav-item">
               <SearchIcon />
@@ -44,9 +47,12 @@ export default function Navbar({ user, setProfile }: NavBarProps) {
               <CreateIcon />
               <a className="nav-link">Create</a>
             </li>
-            <li className="nav-item clickable" onClick={ () => setProfile && setProfile({ isProfile: true, user })}>
+            <li className="nav-item clickable"
+            onClick={ () => setProfile && setProfile({ isProfile: true, user })}>
               <img className="perfil-img" src="/src/img/manon.jpg" alt="Manon Profile" />
-              <a className="nav-link">Profile</a>
+              <a className={`nav-link ${active === 'profile' ? 'active' : ''}`}>
+                Profile
+              </a>
             </li>
             <li className="nav-item">
               <MoreIcon />

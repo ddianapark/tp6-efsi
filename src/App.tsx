@@ -69,7 +69,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <div className="div1"><Navbar user={user} setProfile={setProfile} /></div>
+        <div className="div1"><Navbar user={user} isProfile={profile.isProfile} setProfile={setProfile} /></div>
         <section className='scroll'>
           {profile.isProfile ? (
             <Profile isProfile={profile.isProfile} user={profile.user} />

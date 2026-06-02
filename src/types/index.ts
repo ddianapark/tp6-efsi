@@ -42,5 +42,6 @@ export interface ProfileProps{
 
 export interface NavBarProps {
     user: User | null,
+    isProfile: boolean,
     setProfile?: (state: ProfileProps) => void
 }
