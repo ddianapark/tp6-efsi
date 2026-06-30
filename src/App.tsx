@@ -72,7 +72,7 @@ function App() {
         <div className="div1"><Navbar user={user} isProfile={profile.isProfile} setProfile={setProfile} /></div>
         <section className='scroll'>
           {profile.isProfile ? (
-            <Profile isProfile={profile.isProfile} user={profile.user} />
+            <Profile isProfile={profile.isProfile} user={profile.user ?? user} />
           ) : (
             <>
               <div className="div2"><Carrousel stories={stories} /></div>

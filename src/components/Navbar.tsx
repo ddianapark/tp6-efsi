@@ -48,8 +48,18 @@ export default function Navbar({ user, isProfile, setProfile }: NavBarProps) {
               <a className="nav-link">Create</a>
             </li>
             <li className="nav-item clickable"
-            onClick={ () => setProfile && setProfile({ isProfile: true, user })}>
-              <img className="perfil-img" src="/src/img/manon.jpg" alt="Manon Profile" />
+            onClick={() => setProfile && setProfile({
+              isProfile: true,
+              user: {
+                username: 'manon',
+                userImage: '/src/img/manon.jpg'
+              }
+            })}>
+              <img
+                className="perfil-img"
+                src={'/src/img/manon.jpg'}
+                alt={user ? `${user.username} profile` : 'Manon Profile'}
+              />
               <a className={`nav-link ${active === 'profile' ? 'active' : ''}`}>
                 Profile
               </a>
