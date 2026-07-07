@@ -38,8 +38,10 @@ function App() {
       }))
       
       const itemsStories = catsForStories.map((cat: any) => ({
-        username: cat.breeds?.[0]?.name || `user_${cat.id}`,
-        userImage: cat.url
+        data: {
+          username: cat.breeds?.[0]?.name || `user_${cat.id}`,
+          userImage: cat.url
+        }
       }))
 
       setPosts(itemsPosts)

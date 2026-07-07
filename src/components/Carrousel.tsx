@@ -9,7 +9,7 @@ export default function Carrousel({ stories }: CarrouselProps) {
         <div className="carrousel-inner">
           <div className="carrousel-item active">
             {stories?.map((story) => (
-              <Story key={story.username} data={story} />
+              <Story key={story.data.username} data={story.data} />
             ))}
           </div>
         </div>
